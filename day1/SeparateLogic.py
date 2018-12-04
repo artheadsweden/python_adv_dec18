@@ -18,7 +18,7 @@ def cache(f):
     def wrapper(url):
         if url in saved:
             return saved[url]
-        page = requests.get(url).text
+        page = f(url)
         saved[url] = page
         return page
     return wrapper
